@@ -70,5 +70,10 @@ public class Board {
 				+ "1 - - - - - - - -\r\n"
 				+ " a b c d e f g h");
 	}
+
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
+	}
 	
 }
