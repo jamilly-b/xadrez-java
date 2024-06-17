@@ -1,7 +1,9 @@
 package board;
 
-public class BoardException {
-	public BoardException() {
-		// TODO
+public class BoardException extends RuntimeException {
+	private static final long serialVersionUID = 1L;
+
+	public BoardException(String msg) {
+		super(msg);
 	}
 }
