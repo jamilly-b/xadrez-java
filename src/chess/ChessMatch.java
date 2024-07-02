@@ -15,7 +15,7 @@ public class ChessMatch {
 		initialSetup();
 	}
 	
-	public ChessPiece[][] getPiece(){
+	public ChessPiece[][] getPieces(){
 		
 		ChessPiece[][] matrix = new ChessPiece[board.getRows()][board.getColumns()];
 		
@@ -26,6 +26,12 @@ public class ChessMatch {
 		}
 		
 		return matrix;
+	}
+	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		return board.piece(position).possibleMoves();
 	}
 	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition ) {
