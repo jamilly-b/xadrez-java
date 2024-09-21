@@ -1,5 +1,7 @@
 package chess;
 
+import chess.observer.Observable;
+import chess.observer.Observer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +16,7 @@ import chess.pieces.Pawn;
 import chess.pieces.Queen;
 import chess.pieces.Rook;
 
-public class ChessMatch {
+public class ChessMatch extends Observable {
 
 	private int turn;
 	private Color currentPlayer;
@@ -84,6 +86,9 @@ public class ChessMatch {
 		validateSourcePosition(source);
 		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
+		
+		// observer de movimento
+        notifyObservers("Moved from " + sourcePosition + " to " + targetPosition + " (observer)");
 		
 		if(testCheck(currentPlayer)) {
 			undoMove(source, target, capturedPiece);

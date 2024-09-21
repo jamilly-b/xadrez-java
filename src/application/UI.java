@@ -10,8 +10,9 @@ import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
+import chess.observer.Observer;
 
-public class UI {
+public class UI implements Observer {
 
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
@@ -124,10 +125,10 @@ public class UI {
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public void update(String event) {
+		 System.out.println(event);
+	}	
 	
 }
